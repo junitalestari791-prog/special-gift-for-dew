@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>HBD Dewi Babygirl 🎂</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink: #FF6B9D;
+    --purple: #C77DFF;
+    --yellow: #FFD166;
+    --mint: #06D6A0;
+    --blue: #118AB2;
+    --coral: #FF6B6B;
+    --bg: #1a0a2e;
+    --card: #2d1b4e;
+    --text: #fff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; min-height: 100%; overflow-x: hidden; }
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ===== PAGES ===== */
+  .page { display: none; min-height: 100vh; position: relative; }
+  .page.active { display: flex; flex-direction: column; }
+
+  /* ===== STARS BG ===== */
+  .stars {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: 0; overflow: hidden;
+  }
+  .star {
+    position: absolute; border-radius: 50%;
+    background: white; animation: twinkle 3s infinite alternate;
+  }
+  @keyframes twinkle { 0%{opacity:.2;transform:scale(1)} 100%{opacity:1;transform:scale(1.4)} }
+
+  /* ===== PAGE 1 - LANDING ===== */
+  #page1 {
+    justify-content: center; align-items: center;
+    text-align: center; padding: 2rem;
+    background: radial-gradient(ellipse at center, #2d1b4e 0%, #1a0a2e 70%);
+  }
+  .landing-content { position: relative; z-index: 1; }
+  .balloon-row { display: flex; justify-content: center; gap: 1rem; margin-bottom: 1.5rem; font-size: 2.5rem; }
+  .balloon { animation: floatBalloon 3s ease-in-out infinite alternate; display: inline-block; }
+  .balloon:nth-child(2) { animation-delay: .4s; }
+  .balloon:nth-child(3) { animation-delay: .8s; }
+  @keyframes floatBalloon { 0%{transform:translateY(0) rotate(-5deg)} 100%{transform:translateY(-15px) rotate(5deg)} }
+
+  .hbd-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(2rem, 8vw, 4rem);
+    line-height: 1.2;
+    background: linear-gradient(135deg, var(--pink), var(--purple), var(--yellow));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    filter: drop-shadow(0 0 20px rgba(255,107,157,.5));
+    animation: glow 2s ease-in-out infinite alternate;
+    margin-bottom: .8rem;
+  }
+  @keyframes glow {
+    0%{filter:drop-shadow(0 0 10px rgba(255,107,157,.4))}
+    100%{filter:drop-shadow(0 0 30px rgba(199,125,255,.8))}
+  }
+  .subtitle {
+    font-size: clamp(.9rem, 3.5vw, 1.2rem);
+    color: rgba(255,255,255,.75);
+    font-weight: 600;
+    margin-bottom: 2.5rem;
+    max-width: 380px;
+    margin-left: auto; margin-right: auto;
+    line-height: 1.6;
+  }
+  .start-btn {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.4rem;
+    padding: 1rem 3rem;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(135deg, var(--pink), var(--purple));
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 8px 30px rgba(255,107,157,.5);
+    transition: transform .2s, box-shadow .2s;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  .start-btn:hover { transform: scale(1.08); box-shadow: 0 12px 40px rgba(255,107,157,.7); }
+  @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.04)} }
+
+  .confetti-piece {
+    position: absolute; width: 10px; height: 10px; border-radius: 2px;
+    animation: confettiFall linear infinite;
+    pointer-events: none;
+  }
+  @keyframes confettiFall {
+    0%{transform:translateY(-20px) rotate(0deg); opacity:1}
+    100%{transform:translateY(110vh) rotate(720deg); opacity:.1}
+  }
+
+  /* ===== PAGE 2 - GAME HUB ===== */
+  #page2 {
+    padding: 1.5rem; align-items: center;
+    background: radial-gradient(ellipse at top, #2d1b4e, #1a0a2e);
+  }
+  .page2-content { position: relative; z-index: 1; width: 100%; max-width: 500px; }
+  .hub-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(1.5rem, 6vw, 2.2rem);
+    text-align: center; margin-bottom: .3rem;
+    background: linear-gradient(135deg, var(--yellow), var(--pink));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .hub-sub { text-align: center; color: rgba(255,255,255,.6); font-size:.9rem; margin-bottom:1.5rem; }
+  .game-cards { display: flex; flex-direction: column; gap: 1rem; }
+  .game-card {
+    background: var(--card);
+    border-radius: 20px;
+    padding: 1.2rem 1.5rem;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all .3s;
+    display: flex; align-items: center; gap: 1rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,.3);
+  }
+  .game-card:hover { transform: translateY(-3px); }
+  .game-card.g1 { border-color: var(--pink); }
+  .game-card.g1:hover { box-shadow: 0 8px 30px rgba(255,107,157,.4); }
+  .game-card.g2 { border-color: var(--mint); }
+  .game-card.g2:hover { box-shadow: 0 8px 30px rgba(6,214,160,.4); }
+  .game-card.g3 { border-color: var(--yellow); }
+  .game-card.g3:hover { box-shadow: 0 8px 30px rgba(255,209,102,.4); }
+  .game-icon { font-size: 2.5rem; flex-shrink: 0; }
+  .game-info h3 { font-family:'Fredoka One',cursive; font-size:1.2rem; margin-bottom:.2rem; }
+  .game-info p { font-size:.8rem; color:rgba(255,255,255,.6); }
+  .hub-nav { margin-top: 1.5rem; text-align: center; }
+  .nav-btn {
+    background: rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.2);
+    color: white; padding: .6rem 1.5rem;
+    border-radius: 50px; cursor: pointer;
+    font-family:'Nunito',sans-serif; font-size:.9rem;
+    transition: all .2s;
+  }
+  .nav-btn:hover { background: rgba(255,255,255,.2); }
+
+  /* ===== GAME WRAPPER ===== */
+  #game-wrapper {
+    display: none; position: fixed; top:0; left:0; width:100%; height:100%;
+    background: var(--bg); z-index: 100; overflow-y: auto;
+    flex-direction: column; align-items: center;
+  }
+  #game-wrapper.open { display: flex; }
+  .game-header {
+    display: flex; align-items: center; gap: 1rem;
+    width: 100%; max-width: 500px;
+    padding: 1rem 1.5rem 0;
+    position: sticky; top: 0; background: var(--bg); z-index: 10;
+  }
+  .back-btn {
+    background: rgba(255,255,255,.1); border: none;
+    color: white; width: 38px; height: 38px; border-radius: 50%;
+    cursor: pointer; font-size: 1.1rem; flex-shrink:0;
+    transition: background .2s;
+  }
+  .back-btn:hover { background: rgba(255,255,255,.2); }
+  .game-title-bar {
+    font-family:'Fredoka One',cursive; font-size:1.3rem;
+  }
+  .game-area { width: 100%; max-width: 500px; padding: 1rem 1.5rem 2rem; }
+
+  /* ===== MODAL RESULT ===== */
+  .result-modal {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,.7); z-index: 200;
+    justify-content: center; align-items: center; padding: 1.5rem;
+  }
+  .result-modal.open { display: flex; }
+  .result-box {
+    background: var(--card);
+    border-radius: 24px;
+    padding: 2rem 1.5rem;
+    text-align: center; max-width: 340px; width: 100%;
+    border: 2px solid var(--purple);
+    box-shadow: 0 0 40px rgba(199,125,255,.3);
+    animation: popIn .4s cubic-bezier(.34,1.56,.64,1);
+  }
+  @keyframes popIn { from{transform:scale(.6);opacity:0} to{transform:scale(1);opacity:1} }
+  .result-emoji { font-size: 3.5rem; margin-bottom:.5rem; }
+  .result-title { font-family:'Fredoka One',cursive; font-size:1.8rem; margin-bottom:.5rem; }
+  .result-msg { font-size:.95rem; color:rgba(255,255,255,.8); line-height:1.6; margin-bottom:1.5rem; }
+  .result-actions { display:flex; gap:.8rem; justify-content:center; flex-wrap:wrap; }
+  .r-btn {
+    font-family:'Fredoka One',cursive;
+    padding:.6rem 1.4rem; border-radius:50px; border:none;
+    cursor:pointer; font-size:1rem; transition: transform .2s;
+  }
+  .r-btn:hover { transform:scale(1.05); }
+  .r-btn.primary { background: linear-gradient(135deg,var(--pink),var(--purple)); color:white; }
+  .r-btn.secondary { background: rgba(255,255,255,.15); color:white; }
+
+  /* ===== GAME 1: MEMORY CARD ===== */
+  .score-bar { display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; }
+  .score-pill {
+    background:rgba(255,255,255,.1); padding:.4rem .9rem;
+    border-radius:20px; font-size:.85rem; font-weight:700;
+  }
+  .memory-grid {
+    display: grid; grid-template-columns: repeat(4,1fr);
+    gap: .5rem; margin-bottom:1rem;
+  }
+  .mem-card {
+    aspect-ratio:1; border-radius:12px;
+    background: linear-gradient(135deg,#3d2566,#5a2d8a);
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.6rem; cursor:pointer;
+    border:2px solid rgba(255,255,255,.1);
+    transition: transform .15s;
+    user-select:none;
+    perspective: 600px;
+  }
+  .mem-card:hover { transform:scale(1.05); }
+  .mem-card .card-inner {
+    width:100%; height:100%; position:relative;
+    transition: transform .4s;
+    transform-style: preserve-3d;
+    border-radius:10px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .mem-card.flipped .card-inner { transform: rotateY(180deg); }
+  .mem-card .card-front, .mem-card .card-back {
+    position:absolute; inset:0;
+    display:flex; align-items:center; justify-content:center;
+    backface-visibility:hidden; border-radius:10px;
+  }
+  .mem-card .card-front { background: linear-gradient(135deg,#3d2566,#5a2d8a); font-size:1.2rem; }
+  .mem-card .card-back { background: linear-gradient(135deg,var(--pink),var(--purple)); transform:rotateY(180deg); }
+  .mem-card.matched .card-back { background: linear-gradient(135deg,var(--mint),#0a9e78); }
+
+  /* ===== GAME 2: WHACK A MOLE ===== */
+  .mole-grid {
+    display:grid; grid-template-columns:repeat(3,1fr);
+    gap:1rem; margin: 1rem 0;
+  }
+  .hole {
+    aspect-ratio:1; border-radius:50%;
+    background: linear-gradient(180deg,#2d1b4e,#1a0a2e);
+    border: 3px solid rgba(255,255,255,.15);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer; font-size:2.2rem; position:relative; overflow:hidden;
+    transition: transform .1s;
+  }
+  .hole:active { transform: scale(.93); }
+  .mole-emoji {
+    position:absolute; bottom:-120%; transition:bottom .15s ease-out;
+    font-size:2rem; user-select:none;
+  }
+  .hole.active .mole-emoji { bottom:5%; }
+  .mole-progress { height:8px; border-radius:4px; background:rgba(255,255,255,.1); margin-top:1rem; overflow:hidden; }
+  .mole-progress-fill { height:100%; border-radius:4px; background:linear-gradient(90deg,var(--mint),var(--blue)); transition:width .1s linear; }
+  .whack-effect {
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    font-size:1.5rem; pointer-events:none; z-index:5;
+    animation: whackPop .5s ease-out forwards;
+  }
+  @keyframes whackPop { 0%{transform:translate(-50%,-50%) scale(.5);opacity:1} 100%{transform:translate(-50%,-200%) scale(1.5);opacity:0} }
+
+  /* ===== GAME 3: WORD SCRAMBLE ===== */
+  .scramble-word {
+    font-family:'Fredoka One',cursive;
+    font-size: clamp(1.8rem,8vw,2.8rem);
+    text-align:center; letter-spacing:.15em;
+    background: linear-gradient(135deg,var(--yellow),var(--coral));
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+    margin: 1rem 0;
+  }
+  .scramble-hint { text-align:center; color:rgba(255,255,255,.5); font-size:.85rem; margin-bottom:.8rem; }
+  .scramble-input {
+    width:100%; padding:.8rem 1rem;
+    background:rgba(255,255,255,.1);
+    border:2px solid rgba(255,255,255,.2);
+    border-radius:12px; color:white; font-size:1.1rem;
+    font-family:'Nunito',sans-serif; font-weight:700;
+    text-transform:uppercase; text-align:center;
+    outline:none; margin-bottom:.8rem;
+    transition: border-color .2s;
+  }
+  .scramble-input:focus { border-color: var(--yellow); }
+  .scramble-input.correct { border-color: var(--mint); background: rgba(6,214,160,.15); }
+  .scramble-input.wrong { border-color: var(--coral); background: rgba(255,107,107,.15); animation: shake .3s ease; }
+  @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-8px)} 75%{transform:translateX(8px)} }
+  .scramble-submit {
+    width:100%; padding:.8rem;
+    background:linear-gradient(135deg,var(--yellow),var(--coral));
+    border:none; border-radius:12px; color:white;
+    font-family:'Fredoka One',cursive; font-size:1.2rem;
+    cursor:pointer; transition:transform .2s, opacity .2s;
+  }
+  .scramble-submit:hover { transform:scale(1.02); }
+  .scramble-lives { text-align:center; font-size:1.3rem; margin:.5rem 0; }
+  .scramble-progress { text-align:center; color:rgba(255,255,255,.5); font-size:.85rem; }
+  .skip-btn {
+    width:100%; padding:.6rem;
+    background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.2);
+    border-radius:12px; color:rgba(255,255,255,.6);
+    font-family:'Nunito',sans-serif; font-size:.9rem;
+    cursor:pointer; margin-top:.5rem;
+    transition: background .2s;
+  }
+  .skip-btn:hover { background:rgba(255,255,255,.2); }
+
+  /* ===== PAGE 3 - WISHES ===== */
+  #page3 {
+    padding: 1.5rem;
+    align-items: center;
+    background: radial-gradient(ellipse at bottom, #2d1b4e, #1a0a2e);
+  }
+  .page3-content { position:relative; z-index:1; width:100%; max-width:520px; }
+  .wish-header { text-align:center; margin-bottom:2rem; }
+  .wish-header .big-emoji { font-size:3rem; display:block; margin-bottom:.5rem; }
+  .wish-header h2 {
+    font-family:'Fredoka One',cursive; font-size:clamp(1.5rem,6vw,2rem);
+    background:linear-gradient(135deg,var(--pink),var(--purple));
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  }
+  .wish-cards { display:flex; flex-direction:column; gap:1rem; margin-bottom:1.5rem; }
+  .wish-card {
+    background:var(--card); border-radius:20px; padding:1.3rem 1.5rem;
+    border-left:4px solid var(--pink);
+    box-shadow:0 4px 20px rgba(0,0,0,.2);
+    animation: slideIn .5s ease backwards;
+    line-height:1.7; font-size:.95rem; color:rgba(255,255,255,.9);
+  }
+  .wish-card:nth-child(2){border-left-color:var(--purple);animation-delay:.1s}
+  .wish-card:nth-child(3){border-left-color:var(--mint);animation-delay:.2s}
+  .wish-card:nth-child(4){border-left-color:var(--yellow);animation-delay:.3s}
+  .wish-card:nth-child(5){border-left-color:var(--coral);animation-delay:.4s}
+  .wish-card:nth-child(6){border-left-color:var(--blue);animation-delay:.5s}
+  @keyframes slideIn { from{transform:translateX(-20px);opacity:0} to{transform:translateX(0);opacity:1} }
+  .wish-card .card-emoji { font-size:1.4rem; margin-bottom:.4rem; display:block; }
+  .back-hub-btn {
+    display:block; width:100%; text-align:center;
+    background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.2);
+    color:white; padding:.8rem; border-radius:50px; cursor:pointer;
+    font-family:'Nunito',sans-serif; font-size:.95rem;
+    transition:background .2s; margin-bottom:1rem;
+  }
+  .back-hub-btn:hover { background:rgba(255,255,255,.2); }
+  .signature {
+    text-align:center; color:rgba(255,255,255,.3); font-size:.8rem;
+    margin-top:1rem; padding-bottom:1rem;
+  }
+</style>
+</head>
+<body>
+
+<!-- Stars -->
+<div class="stars" id="stars"></div>
+
+<!-- RESULT MODAL -->
+<div class="result-modal" id="resultModal">
+  <div class="result-box">
+    <div class="result-emoji" id="resEmoji">🎉</div>
+    <div class="result-title" id="resTitle">Yeay!</div>
+    <div class="result-msg" id="resMsg">Mantap!</div>
+    <div class="result-actions">
+      <button class="r-btn primary" id="resMain">Main Lagi</button>
+      <button class="r-btn secondary" onclick="closeResult()">Balik</button>
+    </div>
+  </div>
+</div>
+
+<!-- GAME WRAPPER -->
+<div id="game-wrapper">
+  <div class="game-header">
+    <button class="back-btn" onclick="closeGame()">←</button>
+    <div class="game-title-bar" id="gameTitleBar">Game</div>
+  </div>
+  <div class="game-area" id="gameArea"></div>
+</div>
+
+<!-- PAGE 1: LANDING -->
+<div class="page active" id="page1">
+  <div class="landing-content">
+    <div class="balloon-row">
+      <span class="balloon">🎈</span>
+      <span class="balloon">🎂</span>
+      <span class="balloon">🎈</span>
+    </div>
+    <h1 class="hbd-title">HBD MET DEW<br>alias DEWI BABYGIRL</h1>
+    <p class="subtitle">Meskipun terlambat selamat atas bertambah usiamu met 🌙✨</p>
+    <button class="start-btn" onclick="goPage('page2')">🎮 Start</button>
+  </div>
+</div>
+
+<!-- PAGE 2: GAME HUB -->
+<div class="page" id="page2">
+  <div class="page2-content">
+    <h2 class="hub-title">🎮 Pilih Game!</h2>
+    <p class="hub-sub">Pas gabut bisa main ini dulu hehe</p>
+    <div class="game-cards">
+      <div class="game-card g1" onclick="openGame('memory')">
+        <div class="game-icon">🃏</div>
+        <div class="game-info">
+          <h3>Memory Match</h3>
+          <p>Temuin pasangan kartunya! Uji ingatan kamu dew 🧠</p>
+        </div>
+      </div>
+      <div class="game-card g2" onclick="openGame('mole')">
+        <div class="game-icon">🔨</div>
+        <div class="game-info">
+          <h3>Whack-a-Mole!</h3>
+          <p>Pukul emotnya secepat mungkin sebelum kabur! 🐹</p>
+        </div>
+      </div>
+      <div class="game-card g3" onclick="openGame('scramble')">
+        <div class="game-icon">🔤</div>
+        <div class="game-info">
+          <h3>Word Scramble</h3>
+          <p>Susun ulang huruf acak jadi kata yang bener! ✏️</p>
+        </div>
+      </div>
+    </div>
+    <div class="hub-nav">
+      <button class="nav-btn" onclick="goPage('page3')">💌 Buka Pesan Ulang Tahun</button>
+      <button class="nav-btn" onclick="goPage('page1')" style="margin-top: 10px; background: rgba(255,255,255,0.05);">🏠 Balik ke Home</button>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 3: WISHES -->
+<div class="page" id="page3">
+  <div class="page3-content">
+    <div class="wish-header">
+      <span class="big-emoji">🎂</span>
+      <h2>Buat Dewi Babygirl 💕</h2>
+    </div>
+    <div class="wish-cards">
+      <div class="wish-card">
+        <span class="card-emoji">🎉</span>
+        Selamat ulang tahun ya. Maaf aku telat ngucapin, mungkin kesannya kek sok sibuk tapi selamat ulang tahun ya.
+      </div>
+      <div class="wish-card">
+        <span class="card-emoji">🌟</span>
+        Semoga kamu selalu dikelilingi orang-orang baik yang sayang sama kamu, selalu bahagia di mana pun kamu berada, dan selalu diberikan yang terbaik atas semua harapanmu.
+      </div>
+      <div class="wish-card">
+        <span class="card-emoji">🤝</span>
+        Maaf selama kita temenan, aku belum bisa jadi temen yang baik buat kamu, tapi makasih karna udah jadi temen yang baik buat aku. Makasih yaa karna udah ngeiyain 77 pertanyaan buat lahir di dunia, meskipun kadang dunia masih jahat sama kamu.
+      </div>
+      <div class="wish-card">
+        <span class="card-emoji">💪</span>
+        Makasih juga udah bertahan dan berusaha terbaik buat diri kamu sendiri. Jaga diri kamu, jaga kesehatan, jaga makan biar tetep sehat terus.
+      </div>
+      <div class="wish-card">
+        <span class="card-emoji">💻</span>
+        Maaf aku gabisa ngasi barang lucu buat kamu, jadi sebagai gantinya aku bikinin kamu semacam web buat kamu pake pas gabut. ANJAY SOK ENGINEER NJIR. Meskipun webnya masih jelek, namanya juga lagi belajar bjir, pls hargai aing. 😭
+      </div>
+      <div class="wish-card">
+        <span class="card-emoji">🫶</span>
+        Udah itu aja hehe. Temenan trus yakk!! 💕✨
+      </div>
+    </div>
+    <button class="back-hub-btn" onclick="goPage('page2')">← Balik ke Game</button>
+    <div class="signature">made for Met Dew</div>
+  </div>
+</div>
+
+<script>
+// ====== STARS ======
+const starsEl = document.getElementById('stars');
+for(let i=0;i<60;i++){
+  const s=document.createElement('div');s.className='star';
+  const size=Math.random()*3+1;
+  s.style.cssText=`width:${size}px;height:${size}px;top:${Math.random()*100}%;left:${Math.random()*100}%;animation-delay:${Math.random()*3}s;animation-duration:${2+Math.random()*3}s`;
+  starsEl.appendChild(s);
+}
+
+// ====== CONFETTI ======
+function spawnConfetti(){
+  const colors=['#FF6B9D','#C77DFF','#FFD166','#06D6A0','#FF6B6B'];
+  for(let i=0;i<30;i++){
+    const c=document.createElement('div');c.className='confetti-piece';
+    c.style.cssText=`left:${Math.random()*100}vw;top:-20px;background:${colors[Math.floor(Math.random()*colors.length)]};width:${6+Math.random()*8}px;height:${6+Math.random()*8}px;border-radius:${Math.random()>0.5?'50%':'2px'};animation-duration:${3+Math.random()*3}s;animation-delay:${Math.random()*2}s;position:fixed;z-index:0;pointer-events:none`;
+    document.getElementById('page1').appendChild(c);
+  }
+}
+spawnConfetti();
+
+// ====== NAVIGATION ======
+function goPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+
+// ====== GAME SYSTEM ======
+let currentGame=null;
+function openGame(name){
+  document.getElementById('game-wrapper').classList.add('open');
+  currentGame=name;
+  if(name==='memory')initMemory();
+  else if(name==='mole')initMole();
+  else if(name==='scramble')initScramble();
+}
+function closeGame(){
+  document.getElementById('game-wrapper').classList.remove('open');
+  clearMole();
+}
+
+// ====== RESULT MODAL ======
+const WIN_MSGS=[
+  "Gila kamu jago banget sih!! 🔥 Dewi babygirl best!",
+  "WOW!! Otaknya encer poll astaga! 🧠✨",
+  "YASSS! Kamu emang beda dari yang lain dew!! 🎉",
+  "Mantap jiwa!! Udah tau belum kamu keren banget? 💅",
+  "SEMPURNA!! Dewi = 🐐 greatest of all time!!"
+];
+const LOSE_MSGS=[
+  "Gakpapa, namanya juga baru nyoba! Coba lagi yuk, kamu pasti bisa! 💪",
+  "Aw jangan nyerah dulu dew! Kamu pasti bisa kok, lanjut! 🌟",
+  "Kalah dikit gakpapa, yang penting udah berani nyoba! Semangat!! 🫶",
+  "Hehe gakpapa, manusia memang tempat salah~ Coba lagi yuk! 🌸",
+  "Belum rezeki~ Tapi semangatnya udah 100%! Coba lagi! 💕"
+];
+function showResult(win, title, opts={}){
+  document.getElementById('resEmoji').textContent = win ? '🎉' : '😢';
+  document.getElementById('resTitle').textContent = title;
+  const msgs = win ? WIN_MSGS : LOSE_MSGS;
+  document.getElementById('resMsg').textContent = msgs[Math.floor(Math.random()*msgs.length)];
+  document.getElementById('resMain').textContent = opts.btnText || 'Main Lagi';
+  document.getElementById('resMain').onclick = opts.onMain || (()=>{ closeResult(); openGame(currentGame); });
+  document.getElementById('resultModal').classList.add('open');
+}
+function closeResult(){ document.getElementById('resultModal').classList.remove('open'); }
+
+// ====== GAME 1: MEMORY MATCH ======
+let memFlipped=[],memLocked=false,memMatched=0,memMoves=0,memTimer=null,memTime=0;
+const EMOJIS=['🐱','🌸','🎀','🍓','🦋','🌙','⭐','🍦'];
+function initMemory(){
+  document.getElementById('gameTitleBar').textContent='🃏 Memory Match';
+  memFlipped=[];memLocked=false;memMatched=0;memMoves=0;memTime=0;
+  clearInterval(memTimer);
+  const cards=[...EMOJIS,...EMOJIS].sort(()=>Math.random()-.5);
+  document.getElementById('gameArea').innerHTML=`
+    <div class="score-bar">
+      <div class="score-pill">⏱ <span id="memTime">0</span>s</div>
+      <div class="score-pill">🎯 <span id="memMoves">0</span> moves</div>
+      <div class="score-pill">✅ <span id="memMatch">0</span>/8</div>
+    </div>
+    <p style="text-align:center;color:rgba(255,255,255,.5);font-size:.8rem;margin-bottom:.8rem">Temukan semua pasangan kartu! 🃏</p>
+    <div class="memory-grid" id="memGrid"></div>
+    <button class="skip-btn" onclick="initMemory()">🔄 Reset</button>
+  `;
+  const grid=document.getElementById('memGrid');
+  cards.forEach((em,i)=>{
+    const div=document.createElement('div');div.className='mem-card';
+    div.innerHTML=`<div class="card-inner"><div class="card-front">✨</div><div class="card-back">${em}</div></div>`;
+    div.dataset.emoji=em;div.dataset.idx=i;
+    div.onclick=()=>flipCard(div);
+    grid.appendChild(div);
+  });
+  memTimer=setInterval(()=>{ memTime++; const el=document.getElementById('memTime'); if(el)el.textContent=memTime; },1000);
+}
+function flipCard(card){
+  if(memLocked||card.classList.contains('flipped')||card.classList.contains('matched'))return;
+  card.classList.add('flipped');
+  memFlipped.push(card);
+  if(memFlipped.length===2){
+    memLocked=true;memMoves++;
+    const m=document.getElementById('memMoves');if(m)m.textContent=memMoves;
+    if(memFlipped[0].dataset.emoji===memFlipped[1].dataset.emoji){
+      memFlipped.forEach(c=>c.classList.add('matched'));
+      memFlipped=[];memLocked=false;memMatched++;
+      const mc=document.getElementById('memMatch');if(mc)mc.textContent=memMatched;
+      if(memMatched===8){
+        clearInterval(memTimer);
+        setTimeout(()=>showResult(true,`Selesai! ${memTime}s, ${memMoves} moves!`,{btnText:'Main Lagi',onMain:()=>{closeResult();initMemory();}}),400);
+      }
+    } else {
+      setTimeout(()=>{
+        memFlipped.forEach(c=>c.classList.remove('flipped'));
+        memFlipped=[];memLocked=false;
+      },900);
+    }
+  }
+}
+
+// ====== GAME 2: WHACK A MOLE ======
+let moleScore=0,moleTimer=null,moleCountdown=null,moleTimeLeft=30,moleActive=[];
+const MOLES=['🐹','🐭','🐱','🐸','🐨','😈','👾','🦊'];
+function initMole(){
+  document.getElementById('gameTitleBar').textContent='🔨 Whack-a-Mole!';
+  moleScore=0;moleTimeLeft=30;moleActive=[];
+  clearInterval(moleTimer);clearInterval(moleCountdown);
+  document.getElementById('gameArea').innerHTML=`
+    <div class="score-bar">
+      <div class="score-pill">⏱ <span id="moleTime">30</span>s</div>
+      <div class="score-pill">🔨 <span id="moleScore">0</span> poin</div>
+    </div>
+    <p style="text-align:center;color:rgba(255,255,255,.5);font-size:.8rem;margin-bottom:.5rem">Ketuk tikusnya sebelum kabur! 🐹</p>
+    <div class="mole-grid" id="moleGrid"></div>
+    <div class="mole-progress"><div class="mole-progress-fill" id="moleBar" style="width:100%"></div></div>
+  `;
+  const grid=document.getElementById('moleGrid');
+  for(let i=0;i<9;i++){
+    const hole=document.createElement('div');hole.className='hole';hole.dataset.idx=i;
+    hole.innerHTML=`<span class="mole-emoji">${MOLES[Math.floor(Math.random()*MOLES.length)]}</span>`;
+    hole.onclick=(e)=>whackHole(hole,e);
+    grid.appendChild(hole);
+    moleActive.push(false);
+  }
+  moleTimer=setInterval(spawnMole,700);
+  moleCountdown=setInterval(()=>{
+    moleTimeLeft--;
+    const t=document.getElementById('moleTime');if(t)t.textContent=moleTimeLeft;
+    const b=document.getElementById('moleBar');if(b)b.style.width=(moleTimeLeft/30*100)+'%';
+    if(moleTimeLeft<=0){
+      clearInterval(moleTimer);clearInterval(moleCountdown);
+      setTimeout(()=>showResult(moleScore>=15,moleScore>=15?`WOAH! ${moleScore} poin!!`:`${moleScore} poin, hampir!`,{btnText:'Main Lagi',onMain:()=>{closeResult();initMole();}}),200);
+    }
+  },1000);
+}
+function spawnMole(){
+  const holes=document.querySelectorAll('.hole');
+  const inactive=[...holes].filter(h=>!h.classList.contains('active'));
+  if(!inactive.length)return;
+  const hole=inactive[Math.floor(Math.random()*inactive.length)];
+  const moleEm=hole.querySelector('.mole-emoji');
+  moleEm.textContent=MOLES[Math.floor(Math.random()*MOLES.length)];
+  hole.classList.add('active');
+  setTimeout(()=>hole.classList.remove('active'),900+Math.random()*600);
+}
+function whackHole(hole,e){
+  if(!hole.classList.contains('active'))return;
+  hole.classList.remove('active');
+  moleScore++;
+  const s=document.getElementById('moleScore');if(s)s.textContent=moleScore;
+  const ef=document.createElement('div');ef.className='whack-effect';
+  const stars=['💥','⭐','✨','💫'];
+  ef.textContent=stars[Math.floor(Math.random()*stars.length)];
+  hole.appendChild(ef);
+  setTimeout(()=>ef.remove(),500);
+}
+function clearMole(){ clearInterval(moleTimer);clearInterval(moleCountdown); }
+
+// ====== GAME 3: WORD SCRAMBLE ======
+const WORDS=[
+  {word:'SEMANGAT',hint:'Kata penyemangat sehari-hari 💪'},
+  {word:'BAHAGIA',hint:'Perasaan senang banget 😊'},
+  {word:'BINTANG',hint:'Ada di langit malam ⭐'},
+  {word:'CANTIK',hint:'Kata sifat positif buat orang 🌸'},
+  {word:'PELANGI',hint:'Muncul setelah hujan 🌈'},
+  {word:'KUCING',hint:'Hewan peliharaan lucu 🐱'},
+  {word:'BUNGA',hint:'Ada di taman, wangi 🌺'},
+  {word:'COKLAT',hint:'Rasa favorit banyak orang 🍫'},
+  {word:'PIZZA',hint:'Makanan Italia yang bulat 🍕'},
+  {word:'TIDUR',hint:'Kegiatan wajib setelah capek 😴'},
+  {word:'KUPU',hint:'Serangga cantik berwarna-warni 🦋'},
+  {word:'HUJAN',hint:'Turun dari langit, basah 🌧'},
+  {word:'BUKU',hint:'Sumber ilmu berlembar-lembar 📚'},
+  {word:'MUSIK',hint:'Enak didengar di kuping 🎵'},
+  {word:'KOPI',hint:'Minuman penyemangat pagi ☕'},
+];
+let scrambleWords=[],scrambleIdx=0,scrambleLives=3,scrambleCorrect=0;
+function shuffleWord(w){ return w.split('').sort(()=>Math.random()-.5).join(''); }
+function initScramble(){
+  document.getElementById('gameTitleBar').textContent='🔤 Word Scramble';
+  scrambleWords=[...WORDS].sort(()=>Math.random()-.5).slice(0,8);
+  scrambleIdx=0;scrambleLives=3;scrambleCorrect=0;
+  renderScramble();
+}
+function renderScramble(){
+  const cur=scrambleWords[scrambleIdx];
+  let sc=shuffleWord(cur.word);
+  while(sc===cur.word)sc=shuffleWord(cur.word);
+  document.getElementById('gameArea').innerHTML=`
+    <div style="text-align:center;color:rgba(255,255,255,.5);font-size:.85rem;margin-bottom:.5rem">Susun huruf ini jadi kata yang bener!</div>
+    <div class="scramble-word">${sc}</div>
+    <div class="scramble-hint">Hint: ${cur.hint}</div>
+    <div class="scramble-lives">${'❤️'.repeat(scrambleLives)}${'🖤'.repeat(3-scrambleLives)}</div>
+    <div class="scramble-progress">Soal ${scrambleIdx+1} dari ${scrambleWords.length} • Benar: ${scrambleCorrect} ✅</div>
+    <br>
+    <input class="scramble-input" id="scrambleInput" maxlength="${cur.word.length}" placeholder="Ketik jawaban..." autocomplete="off" autocorrect="off" spellcheck="false">
+    <button class="scramble-submit" onclick="checkScramble()">Cek Jawaban ✓</button>
+    <button class="skip-btn" onclick="skipScramble()">Lewati soal ini →</button>
+  `;
+  document.getElementById('scrambleInput').addEventListener('keydown',e=>{if(e.key==='Enter')checkScramble();});
+  document.getElementById('scrambleInput').focus();
+}
+function checkScramble(){
+  const inp=document.getElementById('scrambleInput');
+  if(!inp)return;
+  const answer=inp.value.trim().toUpperCase();
+  const correct=scrambleWords[scrambleIdx].word;
+  if(answer===correct){
+    inp.classList.add('correct');
+    scrambleCorrect++;
+    setTimeout(()=>{
+      scrambleIdx++;
+      if(scrambleIdx>=scrambleWords.length){
+        showResult(true,`Kamu dapat ${scrambleCorrect}/${scrambleWords.length}!`,{btnText:'Main Lagi',onMain:()=>{closeResult();initScramble();}});
+      } else renderScramble();
+    },600);
+  } else {
+    inp.classList.add('wrong');
+    scrambleLives--;
+    setTimeout(()=>{
+      inp.classList.remove('wrong');inp.value='';
+      if(scrambleLives<=0){
+        showResult(false,`Game Over! Benar ${scrambleCorrect}/${scrambleWords.length}`,{btnText:'Coba Lagi',onMain:()=>{closeResult();initScramble();}});
+      } else renderScramble();
+    },600);
+  }
+}
+function skipScramble(){
+  scrambleIdx++;
+  if(scrambleIdx>=scrambleWords.length){
+    showResult(scrambleCorrect>=4,`Selesai! Benar ${scrambleCorrect}/${scrambleWords.length}`,{btnText:'Main Lagi',onMain:()=>{closeResult();initScramble();}});
+  } else renderScramble();
+}
+</script>
+</body>
+</html>
